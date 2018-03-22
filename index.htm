@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html ng-app="AngTest">
+<head>
+ <title>TEST</title>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.min.js"></script>
+ <script type="text/javascript" src="./main.js"></script>
+ <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+ <div class="wrapper">
+ 
+   <div class="authbox" ng-controller="LogForm">
+
+    <div class="boxxer">
+     <div class="warning" ng-show="isEven(warningmessage)">{{warningmessage}}</div>
+
+     <div class="welcome" ng-hide="loginBox || isEven(token)">
+       Добро пожаловать на тестовый проект. Добро пожаловать на тестовый проект. Добро пожаловать на тестовый проект.
+       <a href="" ng-click="loginBox = ! loginBox" class="rbg">Вход</a>
+     </div>
+     
+     <div class="loginbox" ng-show="loginBox && !isEven(token)" role="form">
+      <table>
+       <tr>
+        <td><span>Login:</span> <input type="text" name="login" placeholder="demo" ng-model="formLogin.login" required></td>
+        <td><span>Password:</span> <input type="text" name="passw" placeholder="demo" ng-model="formLogin.passw" required></td>
+       </tr>
+       <tr><td colspan="2" class="submit"><a href="" ng-click="saveData()" class="rbg">Войти</a></td></tr>
+      </table>
+     </div>
+    
+     <div class="logined" ng-show="isEven(token)">
+      <p>Вы успешно авторизовались, поздравляем!</p>
+      <p>Ваш токен: <span class="token">{{token}}</span></p>
+      <p>Данные токена сохранены в куках, при след. входе произойдет проверка и если все ok - автоматически войдет</p>
+      <p align=center><a href="" ng-click="logout()" class="rbg">Выйти</a></p>
+     </div>
+ 
+     <span style="display:none">{{formLogin}}</span> <span style="display:none">{{loading}}</span>
+     <div class="loading" ng-show="isEven(loading)"></div>
+    </div>
+   </div>
+
+ </div>
+</body>
+</html>
